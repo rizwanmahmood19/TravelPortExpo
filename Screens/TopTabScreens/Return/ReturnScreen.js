@@ -1,7 +1,9 @@
-import React, { Component } from "react";
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import React, { Component,useState } from "react";
+import { View, Text, TextInput, StyleSheet,SafeAreaView, } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { Card, ListItem, Button, Icon } from "react-native-elements";
+import Counters from "react-native-counters";
+import { Checkbox } from "react-native-paper";
 import {
   Ionicons,
   MaterialIcons,
@@ -11,9 +13,14 @@ import {
 } from "@expo/vector-icons";
 //import LottieView from "lottie-react-native";
 
-class ReturnScreen extends Component {
-  render() {
-    const list = ["Islamabad", "Islanbul", "America", "London"];
+const ReturnScreen = (props) => {
+  const [counter, setCounter] = useState();
+  const [toggleCheckBox, setToggleCheckBox] = useState(false);  
+  const [checkedEconomy, setEconomy] = React.useState(false);
+  const [checkedBussines, setBussines] = React.useState(false);
+  const [checkedFirst, setFirst] = React.useState(false);
+
+  const list = ["Islamabad", "Islanbul", "America", "London"];
 
     return (
       <View>
@@ -73,9 +80,170 @@ class ReturnScreen extends Component {
             </View>
           </View>
         </Card>
+
+        <SafeAreaView style={{ paddingVertical: 15 }}>
+          <Text style={{ paddingBottom: 10, left: 15, fontWeight: "500" }}>
+            PASSENGERS
+          </Text>
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+          </View>
+          <View
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+          >
+            <Text style={{ paddingBottom: 10, paddingTop: 10, left: 15 }}>
+              Adults (age 12+)
+            </Text>
+            <View style={{ left: 149 }}>
+              <Counters
+                max={20}
+                buttonStyle={{
+                  borderColor: "#333",
+                  borderWidth: 2,
+                }}
+                buttonTextStyle={{
+                  color: "#333",
+                }}
+                countTextStyle={{
+                  color: "#333",
+                }}
+                onChange={(len, type) => {
+                  setCounter(len);
+                }}
+              />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+          </View>
+
+          <View
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+          >
+            <Text style={{ paddingBottom: 10, paddingTop: 10, left: 15 }}>
+              Children (age 2-11)
+            </Text>
+            <View style={{ left: 132 }}>
+              <Counters
+                max={20}
+                buttonStyle={{
+                  borderColor: "#333",
+                  borderWidth: 2,
+                }}
+                buttonTextStyle={{
+                  color: "#333",
+                }}
+                countTextStyle={{
+                  color: "#333",
+                }}
+                onChange={(len, type) => {
+                  setCounter(len);
+                }}
+              />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+          </View>
+
+          <View
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+          >
+            <Text style={{ paddingBottom: 10, paddingTop: 10, left: 15 }}>
+              Infant (Ages 0-1, on lap)
+            </Text>
+            <View style={{ left: 100 }}>
+              <Counters
+                max={20}
+                buttonStyle={{
+                  borderColor: "#333",
+                  borderWidth: 2,
+                }}
+                buttonTextStyle={{
+                  color: "#333",
+                }}
+                countTextStyle={{
+                  color: "#333",
+                }}
+                onChange={(len, type) => {
+                  setCounter(len);
+                }}
+              />
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "row", alignItems: "center" }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+            <View style={{ flex: 1, height: 1, backgroundColor: "#CBCBCB" }} />
+          </View>
+        </SafeAreaView>
+
+        <SafeAreaView style={{ paddingVertical: 5 }}>
+          <Text style={{ paddingBottom: 10, left: 15, fontWeight: "500" }}>
+            CLASSES
+          </Text>
+
+          <View
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+          >
+            <Text style={{ paddingBottom: 10, paddingTop: 10, left: 15 }}>
+              Economy
+            </Text>
+            <View style={{ left: 270 }}>
+              <Checkbox
+                color="#1A1A1A"
+                uncheckedColor="blue"
+                status={checkedEconomy ? "unchecked" : "checked"}
+                onPress={() => {
+                  setEconomy(!checkedEconomy);
+                }}
+              />
+            </View>
+          </View>
+          <View
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+          >
+            <Text style={{ paddingBottom: 10, paddingTop: 10, left: 15 }}>
+              Bussiness
+            </Text>
+            <View style={{ left: 266 }}>
+              <Checkbox
+                color="#1A1A1A"
+                uncheckedColor="blue"
+                status={checkedBussines ? "unchecked" : "checked"}
+                onPress={() => {
+                  setBussines(!checkedBussines);
+                }}
+              />
+            </View>
+          </View>
+          <View
+            style={{ flexDirection: "row", marginTop: 10, marginBottom: 10 }}
+          >
+            <Text style={{ paddingBottom: 10, paddingTop: 10, left: 15 }}>
+              First
+            </Text>
+            <View style={{ left: 303 }}>
+              <Checkbox
+                color="#1A1A1A"
+                uncheckedColor="blue"
+                status={checkedFirst ? "unchecked" : "checked"}
+                onPress={() => {
+                  setFirst(!checkedFirst);
+                }}
+              />
+            </View>
+          </View>
+        
+        </SafeAreaView>
+      
       </View>
     );
-  }
 }
 
 const styles = StyleSheet.create({
